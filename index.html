@@ -1,0 +1,127 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+ 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <style> 
+        div { 
+            background-color: lightgrey; 
+ 
+            width: 500px; 
+            height: 300px; 
+            margin-top: 200px; 
+            padding-top: 40px; 
+            margin-left: 500px; 
+            border-radius: 10px; 
+            text-align: center; 
+            list-style: none; 
+ 
+        } 
+ 
+        #main { 
+            border: 10px; 
+ 
+            font-size: 25px; 
+            border-radius: 5px; 
+ 
+ 
+        } 
+ 
+        .main-2 { 
+            font-size: 15px; 
+            height: 25px; 
+            width: 180px; 
+            letter-spacing: normal; 
+            border: 20px; 
+            border-radius: 3px; 
+        } 
+ 
+        .main-3 { 
+            font-size: 20px; 
+ 
+        } 
+    </style> 
+    <title>Registration form</title> 
+ 
+</head> 
+ 
+<body> 
+    <div> 
+        <h2>Registration Form</h2> 
+ 
+        <form action="/index.html" onsubmit="return validateForm()"> 
+            <label class="main-3" for="username">Username:</label> 
+            <input type="text" class="main-2" id="username" name="username"><br><br> 
+            <label class="main-3" for="email"> Email:</label> 
+            <input type="text" class="main-2" id="email" name="email"><br><br> 
+            <label class="main-3" for="pnumber">Phone Number:</label> 
+            <input type="text" class="main-2" id="pnumber" name="phone"><br><br> 
+            <label id="main-3" for="password">Password:</label> 
+            <input type="text" class="main-2" id="password" name="password"><br><br> 
+            <input type="submit" name="" id="main" value="Submit"> 
+        </form> 
+    </div> 
+ 
+     
+ 
+    <script> 
+        const element = document.getElementsByTagName("input"); 
+ 
+        for(let i=0; i<element.length; i++) 
+        { 
+            element[i].setAttribute('required', ""); 
+             
+            if(element[i].getAttribute("name") == "phone") 
+                { 
+                    element[i].setAttribute('maxlength', "13"); 
+                } 
+            else if(element[i].getAttribute("name") == "password") 
+                { 
+                    element[i].setAttribute('maxlength', "12"); 
+                } 
+        } 
+ 
+        function validateForm() { 
+            const element = document.getElementsByTagName("input"); 
+ 
+            for(let i=0; i<element.length; i++) 
+            { 
+                element[i].setAttribute('required', ""); 
+                if(element[i].getAttribute("name") == "phone") 
+                { 
+                    var ele = element[i].value; 
+                    if(!(ele.length == "13")) 
+                        { 
+                           alert("Phone number must be 13 digits"); 
+                           return false; 
+                        } 
+             
+                } 
+ 
+                else if(element[i].getAttribute("name") == "email") 
+                    { 
+                        var mail = element[i].value; 
+                        if(!(mail.endsWith("@gmail.com"))) 
+                            { 
+                                alert("Email Should be end with @gmail.com"); 
+                                return false; 
+                            } 
+                    } 
+ 
+                    else if(element[i].getAttribute("name") == "password") 
+                    { 
+                        var ele = element[i].value; 
+                        if(!(ele.length > 5 && ele.length < 13)) 
+                            { 
+                                alert("password must be 6 to 12 character"); 
+                                return false; 
+                            } 
+                    } 
+            } 
+                 
+        }        
+        </script> 
+   </body>  
+</html>
